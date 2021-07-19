@@ -1,21 +1,28 @@
 //
-//  DiscoverTableViewController.swift
+//  VisitorTableViewController.swift
 //  ZYWeiBo
 //
-//  Created by ZhangYu on 2021/7/16.
+//  Created by ZhangYu on 2021/7/19.
 //
 
 import UIKit
 
-class DiscoverTableViewController: VisitorTableViewController {
+class VisitorTableViewController: UITableViewController {
 
+    private var userLogon = false
+
+
+    override func loadView() {
+        userLogon ? super.loadView() : setupVisitorView()
+    }
+    
+    func setupVisitorView() {
+        view = VisitorView()
+        view.backgroundColor = UIColor.white
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source

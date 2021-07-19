@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MessageTableViewController: UITableViewController {
+class MessageTableViewController: VisitorTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

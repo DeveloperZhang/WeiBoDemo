@@ -21,6 +21,8 @@
 		4431328A26A1257800A3B028 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4431328926A1257800A3B028 /* MessageTableViewController.swift */; };
 		4431328C26A1258300A3B028 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4431328B26A1258300A3B028 /* ProfileTableViewController.swift */; };
 		4431328F26A12BE500A3B028 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4431328E26A12BE500A3B028 /* UIButton+Extension.swift */; };
+		44D1713F26A4FB0E00254459 /* VisitorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D1713E26A4FB0E00254459 /* VisitorTableViewController.swift */; };
+		44D1714126A4FC8700254459 /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D1714026A4FC8700254459 /* VisitorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		4431328926A1257800A3B028 /* MessageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
 		4431328B26A1258300A3B028 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		4431328E26A12BE500A3B028 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		44D1713E26A4FB0E00254459 /* VisitorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorTableViewController.swift; sourceTree = "<group>"; };
+		44D1714026A4FC8700254459 /* VisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +225,7 @@
 		4431328226A1250C00A3B028 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				44D1713D26A4FAE700254459 /* Visitor */,
 				4431328326A1253B00A3B028 /* MainViewController.swift */,
 			);
 			path = Main;
@@ -232,6 +237,15 @@
 				4431328E26A12BE500A3B028 /* UIButton+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		44D1713D26A4FAE700254459 /* Visitor */ = {
+			isa = PBXGroup;
+			children = (
+				44D1713E26A4FB0E00254459 /* VisitorTableViewController.swift */,
+				44D1714026A4FC8700254459 /* VisitorView.swift */,
+			);
+			path = Visitor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,8 +378,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44D1714126A4FC8700254459 /* VisitorView.swift in Sources */,
 				4431324E26A11C5B00A3B028 /* ViewController.swift in Sources */,
 				4431324A26A11C5B00A3B028 /* AppDelegate.swift in Sources */,
+				44D1713F26A4FB0E00254459 /* VisitorTableViewController.swift in Sources */,
 				4431324C26A11C5B00A3B028 /* SceneDelegate.swift in Sources */,
 				4431328426A1253B00A3B028 /* MainViewController.swift in Sources */,
 				4431328826A1257100A3B028 /* DiscoverTableViewController.swift in Sources */,
