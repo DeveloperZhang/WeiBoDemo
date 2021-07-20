@@ -11,6 +11,7 @@ class DiscoverTableViewController: VisitorTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        visitorView?.setupInfo(imageName: "visitordiscover_image_message", title: "登录后,最新,最热微博尽在掌握,不再会与实施潮流擦肩而过")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

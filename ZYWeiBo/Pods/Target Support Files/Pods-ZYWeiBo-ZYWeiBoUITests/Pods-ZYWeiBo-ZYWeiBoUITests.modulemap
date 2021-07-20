@@ -1,0 +1,6 @@
+framework module Pods_ZYWeiBo_ZYWeiBoUITests {
+  umbrella header "Pods-ZYWeiBo-ZYWeiBoUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

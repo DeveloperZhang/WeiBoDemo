@@ -39,10 +39,10 @@ extension MainViewController {
     private func addChildViewControllers() {
         tabBar.tintColor =  UIColor.orange
         addChildViewController(vc: HomeTableViewController(), title: "首页", imageName: "tabbar_home")
-        addChildViewController(vc: HomeTableViewController(), title: "消息", imageName: "tabbar_message_center")
+        addChildViewController(vc: MessageTableViewController(), title: "消息", imageName: "tabbar_message_center")
         addChild(UIViewController())
         addChildViewController(vc: DiscoverTableViewController(), title: "发现", imageName: "tabbar_discover")
-        addChildViewController(vc: DiscoverTableViewController(), title: "我", imageName: "tabbar_profile")
+        addChildViewController(vc: ProfileTableViewController(), title: "我", imageName: "tabbar_profile")
     }
     
     

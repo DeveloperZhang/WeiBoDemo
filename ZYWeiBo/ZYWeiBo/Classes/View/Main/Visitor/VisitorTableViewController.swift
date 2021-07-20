@@ -10,15 +10,16 @@ import UIKit
 class VisitorTableViewController: UITableViewController {
 
     private var userLogon = false
+    var visitorView:VisitorView?
 
 
     override func loadView() {
         userLogon ? super.loadView() : setupVisitorView()
     }
     
-    func setupVisitorView() {
-        view = VisitorView()
-        view.backgroundColor = UIColor.white
+    private func setupVisitorView() {
+        visitorView = VisitorView()
+        view = visitorView
     }
     
     override func viewDidLoad() {
