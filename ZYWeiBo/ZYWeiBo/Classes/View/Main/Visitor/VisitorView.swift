@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import SnapKit
 
 class VisitorView: UIView {
-
+    
     private lazy var iconView:UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_smallicon"))
     private lazy var homeIconView:UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_house"))
     private lazy var messageLabel:UILabel = {
@@ -49,21 +50,47 @@ class VisitorView: UIView {
 }
 
 extension VisitorView {
-
-    
-    private func setupUI() {
-        backgroundColor = UIColor(white: 237.0/255.0, alpha: 1.0)
-        
-        addSubview(homeIconView)
-        addSubview(iconView)
-        addSubview(maskIconView)
-        addSubview(messageLabel)
-        addSubview(registerButton)
-        addSubview(loginButton)
-        
-        for v in subviews {
-            v.translatesAutoresizingMaskIntoConstraints = false
+    fileprivate func setupSubViewsLayoutWithSnapKit() {
+        iconView.snp.makeConstraints { (make) ->  Void in
+            make.centerX.equalTo(self.snp.centerX)
+            make.centerY.equalTo(self.snp.centerY).offset(-60)
         }
+        
+        homeIconView.snp.makeConstraints{(make) ->  Void in
+            make.center.equalTo(iconView.snp.center)
+        }
+        
+        messageLabel.snp.makeConstraints { (make) ->  Void in
+            make.centerX.equalTo(iconView.snp.centerX)
+            make.top.equalTo(iconView.snp.bottom).offset(16)
+            make.width.equalTo(224)
+            make.height.equalTo(36)
+        }
+        
+        registerButton.snp.makeConstraints { (make) ->  Void in
+            make.left.equalTo(messageLabel.snp.left)
+            make.top.equalTo(messageLabel.snp.bottom).offset(16)
+            make.width.equalTo(100)
+            make.height.equalTo(36)
+        }
+        
+        loginButton.snp.makeConstraints { (make) ->  Void in
+            make.right.equalTo(messageLabel.snp.right)
+            make.top.equalTo(registerButton.snp.top)
+            make.width.equalTo(registerButton.snp.width)
+            make.height.equalTo(registerButton.snp.height)
+        }
+        
+        maskIconView.snp.makeConstraints { (make) ->  Void in
+            make.top.equalTo(self.snp.top)
+            make.left.equalTo(self.snp.left)
+            make.right.equalTo(self.snp.left)
+            make.bottom.equalTo(registerButton.snp.bottom)
+        }
+        
+    }
+    
+    fileprivate func setupSubViewsLayout() {
         addConstraint(NSLayoutConstraint(item: iconView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: -60))
         addConstraint(NSLayoutConstraint(item: iconView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0))
         
@@ -89,6 +116,24 @@ extension VisitorView {
         //遮罩约束
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[mask]-0-|", options: [], metrics: nil, views: ["mask":maskIconView]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[mask]-(btnHeight)-[regButton]", options: [], metrics: ["btnHeight":-36], views: ["mask":maskIconView,"regButton":registerButton]))
+    }
+    
+    private func setupUI() {
+        backgroundColor = UIColor(white: 237.0/255.0, alpha: 1.0)
+        
+        addSubview(homeIconView)
+        addSubview(iconView)
+        addSubview(maskIconView)
+        addSubview(messageLabel)
+        addSubview(registerButton)
+        addSubview(loginButton)
+        
+        for v in subviews {
+            v.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
+//        setupSubViewsLayout()
+        setupSubViewsLayoutWithSnapKit()
     }
     
     func setupInfo(imageName:String?, title:String) {

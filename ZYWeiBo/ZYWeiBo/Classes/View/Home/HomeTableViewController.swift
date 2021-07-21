@@ -6,17 +6,22 @@
 //
 
 import UIKit
+import Alamofire
 
 class HomeTableViewController: VisitorTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         visitorView?.setupInfo(imageName: nil, title: "关注一些人,回这里看看有什么惊喜")
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+//        AF.request("http://www.weather.com.cn/data/sk/101010100.html").response { response in
+//            debugPrint(response)
+//        }
+        NetworkToos.networkTools.manageGet(url: "http://www.weather.com.cn/data/sk1/101010100.html", params: [:]) { (result) -> Void in
+            print("请求成功:\(result)")
+        } error: { (error) -> Void in
+            print("错误信息:\(error)")
+        }
     }
 
     // MARK: - Table view data source

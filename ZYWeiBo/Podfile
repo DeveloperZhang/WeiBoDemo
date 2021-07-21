@@ -7,6 +7,8 @@ target 'ZYWeiBo' do
 
   # Pods for ZYWeiBo
   pod 'SnapKit'
+  pod 'SVProgressHUD'
+  pod 'Alamofire'
 
   target 'ZYWeiBoTests' do
     inherit! :search_paths
