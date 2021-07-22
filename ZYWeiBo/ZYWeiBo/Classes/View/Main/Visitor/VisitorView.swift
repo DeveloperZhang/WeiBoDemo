@@ -21,14 +21,14 @@ class VisitorView: UIView {
         label.textAlignment = .center
         return label
     }()
-    private lazy var registerButton:UIButton = {
+    lazy var registerButton:UIButton = {
         let button = UIButton()
         button.setTitle("注册", for: .normal)
         button.setTitleColor(UIColor.orange, for: .normal)
         button.setBackgroundImage(UIImage(named: "common_button_white_disable"), for: .normal)
         return button
     }()
-    private lazy var loginButton:UIButton = {
+    lazy var loginButton:UIButton = {
         let button = UIButton()
         button.setTitle("登录", for: .normal)
         button.setTitleColor(UIColor.orange, for: .normal)

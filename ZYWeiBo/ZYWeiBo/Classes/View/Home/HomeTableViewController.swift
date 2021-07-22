@@ -17,11 +17,11 @@ class HomeTableViewController: VisitorTableViewController {
 //        AF.request("http://www.weather.com.cn/data/sk/101010100.html").response { response in
 //            debugPrint(response)
 //        }
-        NetworkToos.networkTools.manageGet(url: "http://www.weather.com.cn/data/sk1/101010100.html", params: [:]) { (result) -> Void in
-            print("请求成功:\(result)")
-        } error: { (error) -> Void in
-            print("错误信息:\(error)")
-        }
+//        ZYNetworkToos.networkTools.manageGet(url: "http://www.weather.com.cn/data/sk/101010100.html", params: [:]) { (result) -> Void in
+//            print("请求成功:\(result)")
+//        } error: { (error) -> Void in
+//            print("错误信息:\(error)")
+//        }
     }
 
     // MARK: - Table view data source

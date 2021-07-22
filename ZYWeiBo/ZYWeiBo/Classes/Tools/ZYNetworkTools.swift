@@ -21,10 +21,15 @@ enum ZYNetworkStatus: Int32 {
     case wwan            = 1  //2,3,4,5G网络
     case wifi            = 2  //wifi网络
 }
-class NetworkToos: NSObject{
-    static let networkTools:NetworkToos = {
+class ZYNetworkToos: NSObject{
+    private let appKey = "3939621241"
+    private let appSecret = "d7bd65ac4fedf7c89be974c11083efee"
+    private let redirectUrl = "http://www.baidu.com"
+    
+    
+    static let networkTools:ZYNetworkToos = {
         print("创建网络对象")
-        return NetworkToos()
+        return ZYNetworkToos()
     }()
     
     //TODO封装Session
@@ -153,5 +158,35 @@ class NetworkToos: NSObject{
                                 debugPrint(err)
                             }
         }
+    }
+    
+    func managePost(url: String,
+                           params: [String: Any]?,
+                           success: @escaping ZYResponseSuccess,
+                           error: @escaping ZYResponseFail) {
+        AF.request(url,
+                   method: .post,
+                        parameters: params,
+                        encoding: URLEncoding.default,
+                        headers: nil).responseJSON { (response) in
+                            switch response.result {
+                            case .success:
+                                if let value = response.value as? [String: Any] {
+                                    ///添加一些全部接口都有的一些状态判断
+                                    success(value as AnyObject)
+                                    //缓存数据
+                                }
+                            case .failure(let err):
+                                error(err as AnyObject)
+                                debugPrint(err)
+                            }
+        }
+    }
+}
+
+extension ZYNetworkToos {
+    var OAuthURL:NSURL{
+       let urlString = "https://api.weibo.com/oauth2/authorize?client_id=\(appKey)&redirect_uri=\(redirectUrl)"
+        return NSURL(string: urlString)!
     }
 }

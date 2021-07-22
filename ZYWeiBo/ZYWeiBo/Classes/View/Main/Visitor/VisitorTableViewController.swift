@@ -20,7 +20,11 @@ class VisitorTableViewController: UITableViewController {
     private func setupVisitorView() {
         visitorView = VisitorView()
         view = visitorView
+        visitorView?.registerButton.addTarget(self, action: #selector(visitorViewDidRegister), for: .touchUpInside)
+        visitorView?.loginButton.addTarget(self, action: #selector(visitorViewDidLogin), for: .touchUpInside)
     }
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,4 +97,17 @@ class VisitorTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension VisitorTableViewController {
+    @objc func visitorViewDidRegister() {
+        print("注册")
+    }
+    
+    @objc func visitorViewDidLogin() {
+        print("登录")
+        let vc = ZYOAuthViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        present(nav, animated: true)
+    }
 }

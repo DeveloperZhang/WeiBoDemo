@@ -91,8 +91,10 @@
 		4432124126A7A19500415033 /* SDDisplayLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 443211FB26A7A19400415033 /* SDDisplayLink.m */; };
 		4432124226A7A19500415033 /* SDAsyncBlockOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 443211FD26A7A19400415033 /* SDAsyncBlockOperation.m */; };
 		4432124326A7A19500415033 /* SDAssociatedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 443211FE26A7A19400415033 /* SDAssociatedObject.m */; };
-		4432124526A7A5A200415033 /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4432124426A7A5A200415033 /* NetworkTools.swift */; };
+		4432124526A7A5A200415033 /* ZYNetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4432124426A7A5A200415033 /* ZYNetworkTools.swift */; };
 		4432124726A7B0E100415033 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4432124626A7B0E100415033 /* String+Extension.swift */; };
+		4484E4FE26A8EEBB007BFBE1 /* ZYOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4484E4FD26A8EEBB007BFBE1 /* ZYOAuthViewController.swift */; };
+		4484E50026A8F19A007BFBE1 /* ZYConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4484E4FF26A8F19A007BFBE1 /* ZYConst.swift */; };
 		44D1713F26A4FB0E00254459 /* VisitorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D1713E26A4FB0E00254459 /* VisitorTableViewController.swift */; };
 		44D1714126A4FC8700254459 /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D1714026A4FC8700254459 /* VisitorView.swift */; };
 		AAF4D6D45B1D75EC92F98FE4 /* Pods_ZYWeiBo_ZYWeiBoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF6192A7608CCEBA3FBCA0BF /* Pods_ZYWeiBo_ZYWeiBoUITests.framework */; };
@@ -343,8 +345,10 @@
 		443211FC26A7A19400415033 /* SDImageAssetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageAssetManager.h; sourceTree = "<group>"; };
 		443211FD26A7A19400415033 /* SDAsyncBlockOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAsyncBlockOperation.m; sourceTree = "<group>"; };
 		443211FE26A7A19400415033 /* SDAssociatedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAssociatedObject.m; sourceTree = "<group>"; };
-		4432124426A7A5A200415033 /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
+		4432124426A7A5A200415033 /* ZYNetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZYNetworkTools.swift; sourceTree = "<group>"; };
 		4432124626A7B0E100415033 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		4484E4FD26A8EEBB007BFBE1 /* ZYOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZYOAuthViewController.swift; sourceTree = "<group>"; };
+		4484E4FF26A8F19A007BFBE1 /* ZYConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZYConst.swift; sourceTree = "<group>"; };
 		44D1713E26A4FB0E00254459 /* VisitorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorTableViewController.swift; sourceTree = "<group>"; };
 		44D1714026A4FC8700254459 /* VisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
 		5A3A664F0BC4989D28806EED /* Pods-ZYWeiBo-ZYWeiBoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZYWeiBo-ZYWeiBoUITests.release.xcconfig"; path = "Target Support Files/Pods-ZYWeiBo-ZYWeiBoUITests/Pods-ZYWeiBo-ZYWeiBoUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -463,7 +467,8 @@
 			children = (
 				4432113226A7A19400415033 /* SDWebImage */,
 				4431328D26A12B9000A3B028 /* Extension */,
-				4432124426A7A5A200415033 /* NetworkTools.swift */,
+				4432124426A7A5A200415033 /* ZYNetworkTools.swift */,
+				4484E4FF26A8F19A007BFBE1 /* ZYConst.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -478,6 +483,7 @@
 		4431327D26A1250C00A3B028 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4484E4F926A8EE87007BFBE1 /* OAuth */,
 				4431327E26A1250C00A3B028 /* Home */,
 				4431327F26A1250C00A3B028 /* Discover */,
 				4431328026A1250C00A3B028 /* Message */,
@@ -776,6 +782,14 @@
 			path = Private;
 			sourceTree = "<group>";
 		};
+		4484E4F926A8EE87007BFBE1 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				4484E4FD26A8EEBB007BFBE1 /* ZYOAuthViewController.swift */,
+			);
+			path = OAuth;
+			sourceTree = "<group>";
+		};
 		44D1713D26A4FAE700254459 /* Visitor */ = {
 			isa = PBXGroup;
 			children = (
@@ -1060,11 +1074,13 @@
 				4432123426A7A19400415033 /* UIView+WebCacheOperation.m in Sources */,
 				4431324E26A11C5B00A3B028 /* ViewController.swift in Sources */,
 				4431324A26A11C5B00A3B028 /* AppDelegate.swift in Sources */,
+				4484E4FE26A8EEBB007BFBE1 /* ZYOAuthViewController.swift in Sources */,
 				44D1713F26A4FB0E00254459 /* VisitorTableViewController.swift in Sources */,
 				4432123026A7A19400415033 /* SDImageCacheConfig.m in Sources */,
 				4432120626A7A19400415033 /* SDImageIOAnimatedCoder.m in Sources */,
 				4432120426A7A19400415033 /* SDWebImageDownloaderDecryptor.m in Sources */,
 				4432120A26A7A19400415033 /* UIImage+ForceDecode.m in Sources */,
+				4484E50026A8F19A007BFBE1 /* ZYConst.swift in Sources */,
 				4432122126A7A19400415033 /* UIImage+ExtendedCacheData.m in Sources */,
 				4432123126A7A19400415033 /* SDWebImageCacheKeyFilter.m in Sources */,
 				4432124226A7A19500415033 /* SDAsyncBlockOperation.m in Sources */,
@@ -1117,7 +1133,7 @@
 				4432120526A7A19400415033 /* SDWebImageManager.m in Sources */,
 				4432121426A7A19400415033 /* SDImageCodersManager.m in Sources */,
 				4432120326A7A19400415033 /* SDWebImageOperation.m in Sources */,
-				4432124526A7A5A200415033 /* NetworkTools.swift in Sources */,
+				4432124526A7A5A200415033 /* ZYNetworkTools.swift in Sources */,
 				4432120B26A7A19400415033 /* SDImageAWebPCoder.m in Sources */,
 				4432122726A7A19400415033 /* SDImageLoadersManager.m in Sources */,
 				4432121E26A7A19400415033 /* SDImageIOCoder.m in Sources */,
