@@ -22,6 +22,13 @@ class HomeTableViewController: VisitorTableViewController {
 //        } error: { (error) -> Void in
 //            print("错误信息:\(error)")
 //        }
+        
+        ZYNetworkToos.networkTools.loadAccessToken(code: "96130c54f7595a3e8892c72b0c90e88a") { (response) in
+            
+        } error: { (erro) in
+            
+        }
+
     }
 
     // MARK: - Table view data source

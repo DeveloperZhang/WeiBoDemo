@@ -14,6 +14,7 @@ let basePicPath = ""
 typealias ZYResponseSuccess = (_ response: AnyObject) -> Void
 typealias ZYResponseFail = (_ error: AnyObject) -> Void
 typealias ZYNetworkStatusBlock = (_ ZYNetworkStatus: Int32) -> Void
+typealias ZYRequestCallBack = (_ result: AnyObject?, _ error: NSError)->()
 
 enum ZYNetworkStatus: Int32 {
     case unknown         = -1 //位置网络
@@ -21,6 +22,12 @@ enum ZYNetworkStatus: Int32 {
     case wwan            = 1  //2,3,4,5G网络
     case wifi            = 2  //wifi网络
 }
+
+enum ZYRequestMethod:String {
+    case GET = "GET"
+    case POST = "POST"
+}
+
 class ZYNetworkToos: NSObject{
     private let appKey = "3939621241"
     private let appSecret = "d7bd65ac4fedf7c89be974c11083efee"
@@ -102,7 +109,7 @@ class ZYNetworkToos: NSObject{
     
     ///核心方法
     public func requestWith(url: String,
-                            httpMethod: Int32,
+                            httpMethod: ZYRequestMethod,
                             params: [String: Any]?,
                             success: @escaping ZYResponseSuccess,
                             error: @escaping ZYResponseFail) {
@@ -124,7 +131,7 @@ class ZYNetworkToos: NSObject{
         //TODO打印header进行调试.
 
         //Get
-        if httpMethod == 0 {
+        if httpMethod == .GET {
             //无网络状态获取缓存
             if zyNetworkStatus.rawValue == ZYNetworkStatus.notReachable.rawValue
                 || zyNetworkStatus.rawValue == ZYNetworkStatus.unknown.rawValue {
@@ -133,7 +140,7 @@ class ZYNetworkToos: NSObject{
             }
             manageGet(url: lastUrl, params: params, success: success, error: error)
         } else {
-//            managePost(url: lastUrl, params: params!, success: success, error: error)
+            managePost(url: lastUrl, params: params!, success: success, error: error)
         }
     }
     
@@ -151,6 +158,7 @@ class ZYNetworkToos: NSObject{
                                 if let value = response.value as? [String: Any] {
                                     ///添加一些全部接口都有的一些状态判断
                                     success(value as AnyObject)
+                                    debugPrint(value)
                                     //缓存数据
                                 }
                             case .failure(let err):
@@ -174,6 +182,7 @@ class ZYNetworkToos: NSObject{
                                 if let value = response.value as? [String: Any] {
                                     ///添加一些全部接口都有的一些状态判断
                                     success(value as AnyObject)
+                                    debugPrint(value)
                                     //缓存数据
                                 }
                             case .failure(let err):
@@ -188,5 +197,18 @@ extension ZYNetworkToos {
     var OAuthURL:NSURL{
        let urlString = "https://api.weibo.com/oauth2/authorize?client_id=\(appKey)&redirect_uri=\(redirectUrl)"
         return NSURL(string: urlString)!
+    }
+    
+    func loadAccessToken(code:String, success: @escaping ZYResponseSuccess,
+                         error: @escaping ZYResponseFail) {
+        let urlString = "https://api.weibo.com/oauth2/access_token"
+        let params = ["client_id":appKey,"client_secret":appSecret,"grant_type":"authorization_code",
+                      "code":code,"redirect_uri":redirectUrl]
+        requestWith(url: urlString, httpMethod: .POST, params: params) { (result) -> Void in
+            success(result)
+        } error: { (err) -> Void in
+            error(err)
+        }
+
     }
 }
