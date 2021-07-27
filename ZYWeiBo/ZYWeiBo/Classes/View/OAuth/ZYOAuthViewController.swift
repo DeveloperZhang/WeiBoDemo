@@ -76,15 +76,32 @@ extension ZYOAuthViewController: WKNavigationDelegate {
             code = String(query["code=".endIndex..<query.endIndex])
             print("授权码是\(code)")
         }
-        ZYNetworkToos.networkTools.loadAccessToken(code: code) { _ in
-            
+        UserAccountViewModel.sharedUserAccount.loadAccessToken(code: code) { (result) in
+            let account = UserAccountViewModel.sharedUserAccount.account
+            print("account is \(account!)")
         } error: { _ in
             
         }
+
 
         decisionHandler(WKNavigationActionPolicy.cancel)
         
     }
     
+    private func loadUserInfo(account:UserAccount) {
+        let userVM = UserAccountViewModel.sharedUserAccount
+        userVM.loadUserInfo(uid: account.uid!, accessToken: account.access_token!) { result in
+            guard let dic = result as? [String: AnyObject] else {
+                print("格式错误")
+                return
+            }
+            account.screen_name = dic["screen_name"] as? String
+            account.avatar_large = dic["avatar_large"] as? String
+            print(account)
+        } error: { _ in
+            print("加载用户出错")
+        }
+
+    }
     
 }

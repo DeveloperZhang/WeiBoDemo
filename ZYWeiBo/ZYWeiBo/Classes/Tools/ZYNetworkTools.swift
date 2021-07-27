@@ -29,11 +29,6 @@ enum ZYRequestMethod:String {
 }
 
 class ZYNetworkToos: NSObject{
-    private let appKey = "3939621241"
-    private let appSecret = "d7bd65ac4fedf7c89be974c11083efee"
-    private let redirectUrl = "http://www.baidu.com"
-    
-    
     static let networkTools:ZYNetworkToos = {
         print("创建网络对象")
         return ZYNetworkToos()
@@ -194,21 +189,10 @@ class ZYNetworkToos: NSObject{
 }
 
 extension ZYNetworkToos {
+    
     var OAuthURL:NSURL{
-       let urlString = "https://api.weibo.com/oauth2/authorize?client_id=\(appKey)&redirect_uri=\(redirectUrl)"
+        let urlString = "https://api.weibo.com/oauth2/authorize?client_id=\(ZYConst.sharedConst.appKey)&redirect_uri=\(ZYConst.sharedConst.redirectUrl)"
         return NSURL(string: urlString)!
     }
-    
-    func loadAccessToken(code:String, success: @escaping ZYResponseSuccess,
-                         error: @escaping ZYResponseFail) {
-        let urlString = "https://api.weibo.com/oauth2/access_token"
-        let params = ["client_id":appKey,"client_secret":appSecret,"grant_type":"authorization_code",
-                      "code":code,"redirect_uri":redirectUrl]
-        requestWith(url: urlString, httpMethod: .POST, params: params) { (result) -> Void in
-            success(result)
-        } error: { (err) -> Void in
-            error(err)
-        }
 
-    }
 }

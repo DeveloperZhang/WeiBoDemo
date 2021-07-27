@@ -14,41 +14,163 @@
             filePath = "ZYWeiBo/Classes/Tools/ZYNetworkTools.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "requestWith(url:httpMethod:params:success:error:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            uuid = "83E78110-354C-4611-A391-F754CB98FD6F"
+            uuid = "EECA98F8-7FB6-4D72-9A68-DF16D9BD189E"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ZYWeiBo/Classes/Tools/ZYNetworkTools.swift"
+            breakpointStackSelectionBehavior = "1"
+            scope = "1"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AE965006-BABD-460A-A49E-1CAA8A26763B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZYWeiBo/Classes/ViewModel/UserAccountViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
-            landmarkName = "loadAccessToken(code:success:error:)"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "sharedUserAccount"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "AE965006-BABD-460A-A49E-1CAA8A26763B - a69f7ddba040c0f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "one-time initialization function for sharedUserAccount"
+                  moduleName = "ZYWeiBo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jit/git_my/WeiBoDemo/ZYWeiBo/ZYWeiBo/Classes/ViewModel/UserAccountViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "AE965006-BABD-460A-A49E-1CAA8A26763B - 751dd017122b2cf8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; ZYWeiBo.UserAccountViewModel in variable initialization expression of static ZYWeiBo.UserAccountViewModel.sharedUserAccount : ZYWeiBo.UserAccountViewModel"
+                  moduleName = "ZYWeiBo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jit/git_my/WeiBoDemo/ZYWeiBo/ZYWeiBo/Classes/ViewModel/UserAccountViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "11">
+               </Location>
+               <Location
+                  uuid = "AE965006-BABD-460A-A49E-1CAA8A26763B - 4517b5ff2e1642b0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ZYWeiBo.UserAccountViewModel.sharedUserAccount.unsafeMutableAddressor : ZYWeiBo.UserAccountViewModel"
+                  moduleName = "ZYWeiBo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jit/git_my/WeiBoDemo/ZYWeiBo/ZYWeiBo/Classes/ViewModel/UserAccountViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "AE965006-BABD-460A-A49E-1CAA8A26763B - 8fe4b945ac000d10"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static ZYWeiBo.UserAccountViewModel.sharedUserAccount.getter : ZYWeiBo.UserAccountViewModel"
+                  moduleName = "ZYWeiBo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jit/git_my/WeiBoDemo/ZYWeiBo/ZYWeiBo/Classes/ViewModel/UserAccountViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F573F30C-7D49-4874-847B-11A5611C34E7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZYWeiBo/Classes/ViewModel/UserAccountViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "init()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8CF470BD-BFFE-49ED-B900-DE61096B5B58"
+            uuid = "B3C15D97-4635-41A0-839E-54A7EC3BA369"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ZYWeiBo/Classes/Tools/ZYNetworkTools.swift"
+            filePath = "ZYWeiBo/Classes/ViewModel/UserAccountViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
-            landmarkName = "loadAccessToken(code:success:error:)"
+            startingLineNumber = "6"
+            endingLineNumber = "6"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BB8F1F37-7460-45F2-AD62-70FC57A1A82B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZYWeiBo/Classes/Model/UserAccount.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "saveUserAccount()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D358650C-40EC-401C-AB88-D5D4FC816F20"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZYWeiBo/Classes/Model/UserAccount.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "saveUserAccount()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

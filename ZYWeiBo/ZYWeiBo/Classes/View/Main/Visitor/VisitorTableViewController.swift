@@ -9,12 +9,13 @@ import UIKit
 
 class VisitorTableViewController: UITableViewController {
 
-    private var userLogon = false
+    private var userLogon = UserAccountViewModel.sharedUserAccount.userLogon
     var visitorView:VisitorView?
 
 
     override func loadView() {
         userLogon ? super.loadView() : setupVisitorView()
+        print("VisitorTableViewController加载完成")
     }
     
     private func setupVisitorView() {
