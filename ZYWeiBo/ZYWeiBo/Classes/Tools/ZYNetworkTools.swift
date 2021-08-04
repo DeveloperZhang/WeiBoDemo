@@ -29,7 +29,10 @@ enum ZYRequestMethod:String {
 }
 
 class ZYNetworkToos: NSObject{
-    static let networkTools:ZYNetworkToos = {
+    
+let tokenDict = ["access_token":UserAccountViewModel.sharedUserAccount.account!.access_token!];
+    
+    static let sharedTools:ZYNetworkToos = {
         print("创建网络对象")
         return ZYNetworkToos()
     }()
@@ -190,9 +193,23 @@ class ZYNetworkToos: NSObject{
 
 extension ZYNetworkToos {
     
+    
     var OAuthURL:NSURL{
         let urlString = "https://api.weibo.com/oauth2/authorize?client_id=\(ZYConst.sharedConst.appKey)&redirect_uri=\(ZYConst.sharedConst.redirectUrl)"
         return NSURL(string: urlString)!
+    }
+    
+    func loadStatus(successed: @escaping ZYResponseSuccess, error: @escaping ZYResponseFail) {
+        guard  tokenDict["access_token"] != nil else {
+            error(NSError.init(domain: "cn.vicent.error", code: -1001, userInfo: ["message":"token为空"]))
+            return
+        }
+//        let urlString = "https://api.weibo.com/2/emotions.json"
+        let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
+//        let urlString = "https://api.weibo.com/oauth2/get_token_info"
+        
+        requestWith(url: urlString, httpMethod: .GET, params: tokenDict as [String : Any],success: successed, error: error)
+
     }
 
 }

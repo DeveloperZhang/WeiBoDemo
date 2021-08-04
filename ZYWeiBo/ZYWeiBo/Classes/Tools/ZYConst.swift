@@ -9,7 +9,7 @@ import UIKit
 
 class ZYConst: NSObject {
     let appKey = "3939621241"
-    let appSecret = "d7bd65ac4fedf7c89be974c11083efee"
+    let appSecret = "c6f5e8483f950c224f3369b3db1e7398"
     let redirectUrl = "http://www.baidu.com"
     
     

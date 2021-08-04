@@ -13,23 +13,20 @@ class UserAccount: NSObject, NSCoding, NSSecureCoding {
     
     var access_token:String?
     var uid:String?
-    var expires_in:TimeInterval = 0 {
-        didSet {
-            expiresDate = NSDate(timeIntervalSinceNow: expires_in)
-        }
-    }
-    var expiresDate:NSDate?
+    var expires_in:TimeInterval = 0
+//    {
+//        didSet {
+//            expiresDate = expires_in * 1000
+//        }
+//    }
+//    var expiresDate:TimeInterval?
     var screen_name:String?
     var avatar_large:String?
     
-    override var description: String{
-        let keys = ["access_token","expires_in","expiresDate","uid","screen_name","avatar_large"]
-        return dictionaryWithValues(forKeys: keys).description
-    }
-    
+
     func encode(with coder: NSCoder) {
         coder.encode(access_token, forKey: "access_token")
-        coder.encode(expiresDate, forKey: "expiresDate")
+        coder.encode(expires_in, forKey: "expires_in")
         coder.encode(uid, forKey: "uid")
         coder.encode(screen_name, forKey: "screen_name")
         coder.encode(avatar_large, forKey: "avatar_large")
@@ -39,7 +36,7 @@ class UserAccount: NSObject, NSCoding, NSSecureCoding {
     required init?(coder: NSCoder) {
         access_token = coder.decodeObject(forKey: "access_token") as? String
         uid = coder.decodeObject(forKey: "uid") as? String
-        expiresDate = coder.decodeObject(forKey: "expiresDate") as? NSDate
+        expires_in = coder.decodeDouble(forKey: "expires_in")
         screen_name = coder.decodeObject(forKey: "screen_name") as? String
         avatar_large = coder.decodeObject(forKey: "avatar_large") as? String
         
@@ -73,5 +70,10 @@ class UserAccount: NSObject, NSCoding, NSSecureCoding {
     
     override func setValue(_ value: Any?, forUndefinedKey key: String) {
         
+    }
+    
+    override var description: String{
+        let keys = ["access_token","expires_in","uid","screen_name","avatar_large"]
+        return dictionaryWithValues(forKeys: keys).description
     }
 }

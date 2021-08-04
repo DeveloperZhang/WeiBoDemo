@@ -8,9 +8,14 @@
 import UIKit
 
 class UserAccountViewModel: NSObject {
+    
     static let sharedUserAccount:UserAccountViewModel = {
         return UserAccountViewModel()
     }()
+    
+    var avatarUrl: NSURL {
+        return NSURL(string: account?.avatar_large ?? "")!
+    }
     
     var account:UserAccount?
     private var accountPath:String{
@@ -21,11 +26,11 @@ class UserAccountViewModel: NSObject {
     private var isExpired:Bool {
         // 其中 starStr， stopStr 为字符串类型，结构类似“2020-01-01”
         let intervalNow = NSDate().timeIntervalSince1970
-        let intervalExpires = account!.expiresDate!.timeIntervalSince1970
+        let intervalExpires = intervalNow + account!.expires_in
         if intervalNow < intervalExpires {
-            print("已过期")
             return false
         }
+        print("已过期")
         return true
     }
     
@@ -72,7 +77,7 @@ class UserAccountViewModel: NSObject {
             return
         }
         params["uid"] = uid
-        ZYNetworkToos.networkTools.requestWith(url: urlString, httpMethod: .GET, params: params) { (result) -> Void in
+        ZYNetworkToos.sharedTools.requestWith(url: urlString, httpMethod: .GET, params: params) { (result) -> Void in
             success(result)
         
         } error: { (err) -> Void in
@@ -86,7 +91,7 @@ class UserAccountViewModel: NSObject {
         let urlString = "https://api.weibo.com/oauth2/access_token"
         let params = ["client_id":ZYConst.sharedConst.appKey,"client_secret":ZYConst.sharedConst.appSecret,"grant_type":"authorization_code",
                       "code":code,"redirect_uri":ZYConst.sharedConst.redirectUrl]
-        ZYNetworkToos.networkTools.requestWith(url: urlString, httpMethod: .POST, params: params) { (result) -> Void in
+        ZYNetworkToos.sharedTools.requestWith(url: urlString, httpMethod: .POST, params: params) { (result) -> Void in
             self.account = UserAccount.init(dic: result as! [String:AnyObject])
             self.loadUserInfo(uid: (self.account?.uid!)!, accessToken: (self.account?.access_token)!) { (result1) in
                 let dic = result1 as! [String:AnyObject]

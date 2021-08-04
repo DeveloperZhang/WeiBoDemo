@@ -7,8 +7,11 @@
 
 import UIKit
 
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+    private(set) static var shared: SceneDelegate?
+    
     var window: UIWindow?
 
 
@@ -20,11 +23,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
 //        guard let _ = (scene as? UIWindowScene) else { return }
         
+        Self.shared = self;
         let windowScene :UIWindowScene = scene as! UIWindowScene
         self.window = UIWindow.init(windowScene: windowScene)
         self.window?.frame = windowScene.coordinateSpace.bounds
-        self.window?.rootViewController = MainViewController.init()
+//        self.window?.rootViewController = MainViewController.init()
+//        self.window?.rootViewController = NewFeatureViewController.init()
+//        self.window?.rootViewController = WelcomeViewController.init()
+        self.window?.rootViewController = defaultRootViewController
         self.window?.makeKeyAndVisible()
+        
+        
+        NotificationCenter.default.addObserver(forName:NSNotification.Name(ZYSwitchRootViewControllerNotification), object: nil, queue: nil) { (notification) in
+            let vc = notification.object != nil ? WelcomeViewController() : MainViewController()
+            self.window?.rootViewController = vc
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -54,7 +67,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
+    deinit {
+        //移除监听者
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(ZYSwitchRootViewControllerNotification), object: nil)
+     
+    }
 
 
+}
+
+extension SceneDelegate {
+    private var defaultRootViewController: UIViewController{
+        if UserAccountViewModel.sharedUserAccount.userLogon {
+            return isNewVersion ? NewFeatureViewController() : WelcomeViewController()
+        }
+        return MainViewController()
+    }
+    
+    
+    private var isNewVersion:Bool {
+        let currentVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+        let version = Double(currentVersion)!
+        print("当前版本\(version)")
+        let sandboxVersionKey = "sandboxVersionKey"
+        let sandboxVersion = UserDefaults.standard.double(forKey: sandboxVersionKey)
+        print("之前版本\(sandboxVersion)")
+        UserDefaults.standard.setValue(version, forKey: sandboxVersionKey)
+        return version > sandboxVersion
+    }
 }
 

@@ -7,7 +7,9 @@ target 'ZYWeiBo' do
 
   # Pods for ZYWeiBo
   pod 'SnapKit'
-  pod 'SVProgressHUD'
+#  pod 'SVProgressHUD'
+#  pod 'ProgressHUD'
+  pod 'ZKProgressHUD'
   pod 'Alamofire'
 
   target 'ZYWeiBoTests' do

@@ -16,7 +16,7 @@ class ZYOAuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.webView.load(NSURLRequest(url: ZYNetworkToos.networkTools.OAuthURL as URL) as URLRequest)
+        self.webView.load(NSURLRequest(url: ZYNetworkToos.sharedTools.OAuthURL as URL) as URLRequest)
         self.webView.navigationDelegate = self
     }
     
@@ -77,8 +77,16 @@ extension ZYOAuthViewController: WKNavigationDelegate {
             print("授权码是\(code)")
         }
         UserAccountViewModel.sharedUserAccount.loadAccessToken(code: code) { (result) in
+            if result is NSNull {
+                return
+            }
             let account = UserAccountViewModel.sharedUserAccount.account
             print("account is \(account!)")
+            
+            self.dismiss(animated: false) {
+                NotificationCenter.default.post(name: Notification.Name(ZYSwitchRootViewControllerNotification), object: "welcome")
+            }
+            
         } error: { _ in
             
         }
