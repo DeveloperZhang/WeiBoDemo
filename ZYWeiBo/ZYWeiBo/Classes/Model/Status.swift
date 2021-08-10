@@ -19,6 +19,11 @@ class Status: NSObject {
     //用户模型
     var user:User?
     
+    var pic_urls:[[String:String]]?
+    
+    //被转发的微博字段
+    var retweeted_status:Status?
+    
     
     init(dic:[String: AnyObject]) {
         super.init()
@@ -27,7 +32,7 @@ class Status: NSObject {
     
     
     override var description: String {
-        let keys = ["id","text","created_at","source","user"]
+        let keys = ["id","text","created_at","source","user","pic_urls","retweeted_status"]
         return dictionaryWithValues(forKeys: keys).description
     }
     
@@ -35,6 +40,11 @@ class Status: NSObject {
         if key == "user" {
             if let dict = value as?[String:AnyObject] {
                 user = User(dict: dict)
+            }
+            return
+        } else if key == "retweeted_status" {
+            if let dict = value as?[String:AnyObject] {
+                retweeted_status = Status(dic: dict)
             }
             return
         }

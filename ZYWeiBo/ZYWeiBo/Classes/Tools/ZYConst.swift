@@ -7,6 +7,9 @@
 
 import UIKit
 
+let StatusCellMargin: CGFloat = 12
+let StatusCellIconWidth: CGFloat = 35
+
 class ZYConst: NSObject {
     let appKey = "3939621241"
     let appSecret = "c6f5e8483f950c224f3369b3db1e7398"

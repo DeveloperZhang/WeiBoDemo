@@ -141,9 +141,9 @@
  *                       The fourth parameter is the original image url.
  */
 - (void)sd_setImageWithURL:(nullable NSURL *)url
-          placeholderImage:(nullable UIImage *)placeholder
-                   options:(SDWebImageOptions)options
-                 completed:(nullable SDExternalCompletionBlock)completedBlock;
+      placeholderImage:(nullable UIImage *)placeholder
+               options:(SDWebImageOptions)options
+             completed:(nullable SDExternalCompletionBlock)completedBlock;
 
 /**
  * Set the imageView `image` with an `url`, placeholder and custom options.

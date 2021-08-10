@@ -8,7 +8,7 @@
 import Foundation
 
 class StatusListViewModel {
-    lazy var statusList = [Status]()
+    lazy var statusList = [StatusViewModel]()
     
     func loadStatus(finished:@escaping (_ isSuccessed:Bool) -> ()) {
         ZYNetworkToos.sharedTools.loadStatus { (result) in
@@ -17,9 +17,9 @@ class StatusListViewModel {
                 finished(false)
                 return
             }
-            var dataList =  [Status]()
+            var dataList =  [StatusViewModel]()
             for dic in array {
-                dataList.append(Status.init(dic: dic))
+                dataList.append(StatusViewModel.init(status: Status(dic: dic)))
             }
             self.statusList = dataList
             finished(true)
