@@ -205,7 +205,9 @@ extension ZYNetworkToos {
             return
         }
 //        let urlString = "https://api.weibo.com/2/emotions.json"
-        let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
+//        let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
+        let urlString = "https://api.weibo.com/2/statuses/user_timeline.json"
+        
 //        let urlString = "https://api.weibo.com/oauth2/get_token_info"
         
         requestWith(url: urlString, httpMethod: .GET, params: tokenDict as [String : Any],success: successed, error: error)

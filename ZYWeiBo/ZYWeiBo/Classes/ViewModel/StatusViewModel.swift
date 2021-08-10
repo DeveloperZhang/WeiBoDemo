@@ -46,18 +46,46 @@ class StatusViewModel:CustomStringConvertible {
     var thumbnailUrls:[NSURL]?
     
     
+    var retweetedText:String?{
+        guard let s = status.retweeted_status else {
+            return nil
+        }
+        return "@" + (s.user?.screen_name ?? " ") + " : " + (s.text ?? " ")
+    }
+    
+    var cellId:String {
+        return status.retweeted_status != nil ? StatusCellRetweetedId : StatusCellNormalId
+    }
+    
+    lazy var rowHeight:CGFloat = {
+        var cell:StatusCell
+        if self.status.retweeted_status != nil {
+            cell = StatusRetweetedCell.init(style: UITableViewCell.CellStyle.default, reuseIdentifier: StatusCellRetweetedId)
+        }else {
+            cell = StatusNormalCell.init(style: UITableViewCell.CellStyle.default, reuseIdentifier: StatusCellNormalId)
+
+        }
+        return cell.rowHeight(vm: self)
+    }()
+    
+    
     init(status:Status) {
         self.status = status
-//        if let urls = status.retweeted_status?.pic_urls{
-//            <#code#>
-//        }
-        
-        if status.pic_urls!.count > 0 {
+        if let urls = status.retweeted_status?.pic_urls {
             thumbnailUrls = [NSURL]()
-            for dic in status.pic_urls! {
+            for dic in urls {
                 let url = NSURL.init(string: dic["thumbnail_pic"]!)
                 thumbnailUrls?.append(url!)
             }
+        }else {
+            if let urls = status.pic_urls {
+                thumbnailUrls = [NSURL]()
+                for dic in urls {
+                    let url = NSURL.init(string: dic["thumbnail_pic"]!)
+                    thumbnailUrls?.append(url!)
+                }
+            }
+            
         }
     }
     

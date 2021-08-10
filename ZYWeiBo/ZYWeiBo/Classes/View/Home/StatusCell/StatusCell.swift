@@ -10,10 +10,10 @@ import UIKit
 class StatusCell: UITableViewCell {
     
     private lazy var topView: StatusCellTopView = StatusCellTopView()
-    private lazy var contentLabel: UILabel = UILabel.init(title: "微博正文", fontSize: 15, color: UIColor.darkGray, screenInset: StatusCellMargin)
-    private lazy var bottomView: StatusCellBottomView = StatusCellBottomView()
+    lazy var contentLabel: UILabel = UILabel.init(title: "微博正文", fontSize: 15, color: UIColor.darkGray, screenInset: StatusCellMargin)
+    lazy var bottomView: StatusCellBottomView = StatusCellBottomView()
     
-    private lazy var pictureView: StatusPictureView = StatusPictureView()
+    lazy var pictureView: StatusPictureView = StatusPictureView()
     
 
 
@@ -35,7 +35,7 @@ class StatusCell: UITableViewCell {
     
     lazy var rowHeights:CGFloat = {
 //        print("计算缓存行高\(self.status.text)")
-        let cell = StatusCell.init(style: .default, reuseIdentifier: StatusCellNormalId)
+        let cell = StatusCell.init(style: .default, reuseIdentifier: viewModel?.cellId)
         return cell.rowHeight(vm: self.viewModel!)
     }()
     
@@ -75,7 +75,7 @@ class StatusCell: UITableViewCell {
 
 extension StatusCell {
     
-    private func setupUI() {
+    @objc func setupUI() {
         contentView.addSubview(topView)
         contentView.addSubview(contentLabel)
         contentView.addSubview(bottomView)
@@ -93,14 +93,12 @@ extension StatusCell {
             make.left.equalTo(contentView.snp.left).offset(StatusCellMargin)
         }
         
-        
         pictureView.snp.makeConstraints { make in
             make.top.equalTo(contentLabel.snp.bottom).offset(StatusCellMargin)
             make.left.equalTo(contentLabel.snp.left)
             make.width.equalTo(300)
             make.height.equalTo(90)
         }
-        
         
         bottomView.snp.makeConstraints { make in
             make.top.equalTo(pictureView.snp.bottom).offset(StatusCellMargin)

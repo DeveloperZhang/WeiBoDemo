@@ -10,11 +10,13 @@ import Alamofire
 import ZKProgressHUD
 
 let StatusCellNormalId = "StatusCellNormalId"
+let StatusCellRetweetedId = "StatusCellRetweetedId"
 
 class HomeTableViewController: VisitorTableViewController {
     
     var dataList:[StatusViewModel]?
     private lazy var listViewModel = StatusListViewModel()
+    
     
     
     override func viewDidLoad() {
@@ -31,7 +33,8 @@ class HomeTableViewController: VisitorTableViewController {
     
     
     private func prepareTableView() {
-        tableView.register(StatusCell.self, forCellReuseIdentifier: StatusCellNormalId)
+        tableView.register(StatusNormalCell.self, forCellReuseIdentifier: StatusCellNormalId)
+        tableView.register(StatusRetweetedCell.self, forCellReuseIdentifier: StatusCellRetweetedId)
         tableView.estimatedRowHeight = 400
 //        tableView.rowHeight = UITableView.automaticDimension
         tableView.rowHeight = 400
@@ -45,7 +48,6 @@ class HomeTableViewController: VisitorTableViewController {
             if !isSuccessed {
                 ZKProgressHUD.showMessage("加载数据失败，请稍后再试")
 //                rootVC.window?.rootViewController = MainVC()
-                
                 return
             }
             print(self.listViewModel.statusList)
@@ -62,15 +64,17 @@ extension HomeTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StatusCellNormalId, for: indexPath) as! StatusCell
-//        cell.textLabel?.text = self.listViewModel.statusList[indexPath.row].status.user?.screen_name
-        cell.viewModel = listViewModel.statusList[indexPath.row]
+        let vm = listViewModel.statusList[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: vm.cellId, for: indexPath) as! StatusCell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: StatusCellRetweetedId, for: indexPath) as! StatusRetweetedCell
+        cell.viewModel = vm
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let vm = listViewModel.statusList[indexPath.row]
-        let cell = StatusCell.init(style: .default, reuseIdentifier: StatusCellNormalId)
+        let cell = StatusCell.init(style: .default, reuseIdentifier: vm.cellId)
+//        let cell = StatusRetweetedCell.init(style: .default, reuseIdentifier: StatusCellRetweetedId)
         cell.viewModel = vm
         return cell.rowHeights
     }

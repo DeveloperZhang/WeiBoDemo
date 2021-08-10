@@ -20,6 +20,7 @@ class StatusListViewModel {
             var dataList =  [StatusViewModel]()
             for dic in array {
                 dataList.append(StatusViewModel.init(status: Status(dic: dic)))
+                print("dic:\(dic.description)")
             }
             self.statusList = dataList
             finished(true)

@@ -12,6 +12,8 @@
 		441DCB7B26B41F7B003365CE /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441DCB7A26B41F7B003365CE /* UILabel+Extension.swift */; };
 		441DCB7D26B42722003365CE /* ZYCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441DCB7C26B42722003365CE /* ZYCommon.swift */; };
 		4424AF4B26C1FCED009BBD35 /* StatusPictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424AF4A26C1FCED009BBD35 /* StatusPictureCell.swift */; };
+		4424AF4D26C20469009BBD35 /* StatusRetweetedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424AF4C26C20469009BBD35 /* StatusRetweetedCell.swift */; };
+		4424AF4F26C20B67009BBD35 /* StatusNormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424AF4E26C20B67009BBD35 /* StatusNormalCell.swift */; };
 		4431324A26A11C5B00A3B028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4431324926A11C5B00A3B028 /* AppDelegate.swift */; };
 		4431324C26A11C5B00A3B028 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4431324B26A11C5B00A3B028 /* SceneDelegate.swift */; };
 		4431324E26A11C5B00A3B028 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4431324D26A11C5B00A3B028 /* ViewController.swift */; };
@@ -144,6 +146,8 @@
 		441DCB7A26B41F7B003365CE /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		441DCB7C26B42722003365CE /* ZYCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZYCommon.swift; sourceTree = "<group>"; };
 		4424AF4A26C1FCED009BBD35 /* StatusPictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPictureCell.swift; sourceTree = "<group>"; };
+		4424AF4C26C20469009BBD35 /* StatusRetweetedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRetweetedCell.swift; sourceTree = "<group>"; };
+		4424AF4E26C20B67009BBD35 /* StatusNormalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusNormalCell.swift; sourceTree = "<group>"; };
 		4431324626A11C5B00A3B028 /* ZYWeiBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZYWeiBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4431324926A11C5B00A3B028 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4431324B26A11C5B00A3B028 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -841,6 +845,8 @@
 				44A928E426BB6504006A67F6 /* StatusCellBottomView.swift */,
 				449EC1B026BCB8DC00B7E9F9 /* StatusPictureView.swift */,
 				4424AF4A26C1FCED009BBD35 /* StatusPictureCell.swift */,
+				4424AF4C26C20469009BBD35 /* StatusRetweetedCell.swift */,
+				4424AF4E26C20B67009BBD35 /* StatusNormalCell.swift */,
 			);
 			path = StatusCell;
 			sourceTree = "<group>";
@@ -1178,6 +1184,7 @@
 				44A928E526BB6504006A67F6 /* StatusCellBottomView.swift in Sources */,
 				4432123526A7A19400415033 /* UIView+WebCache.m in Sources */,
 				4432123E26A7A19400415033 /* SDInternalMacros.m in Sources */,
+				4424AF4F26C20B67009BBD35 /* StatusNormalCell.swift in Sources */,
 				4432122226A7A19400415033 /* SDWebImageDownloaderConfig.m in Sources */,
 				4432121926A7A19400415033 /* SDWebImageDownloaderResponseModifier.m in Sources */,
 				44A928DE26BB629A006A67F6 /* StatusViewModel.swift in Sources */,
@@ -1203,6 +1210,7 @@
 				4432122926A7A19400415033 /* SDWebImageTransition.m in Sources */,
 				443211FF26A7A19400415033 /* SDImageHEICCoder.m in Sources */,
 				4432121226A7A19400415033 /* SDGraphicsImageRenderer.m in Sources */,
+				4424AF4D26C20469009BBD35 /* StatusRetweetedCell.swift in Sources */,
 				4432121D26A7A19400415033 /* NSButton+WebCache.m in Sources */,
 				4432121726A7A19400415033 /* SDWebImageCompat.m in Sources */,
 				4432122326A7A19400415033 /* SDImageCache.m in Sources */,
