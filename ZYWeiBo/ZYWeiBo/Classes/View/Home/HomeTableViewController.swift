@@ -36,7 +36,6 @@ class HomeTableViewController: VisitorTableViewController {
         tableView.register(StatusNormalCell.self, forCellReuseIdentifier: StatusCellNormalId)
         tableView.register(StatusRetweetedCell.self, forCellReuseIdentifier: StatusCellRetweetedId)
         tableView.estimatedRowHeight = 400
-//        tableView.rowHeight = UITableView.automaticDimension
         tableView.rowHeight = 400
         tableView.separatorStyle = .none
     }
@@ -47,7 +46,6 @@ class HomeTableViewController: VisitorTableViewController {
         listViewModel.loadStatus { (isSuccessed) in
             if !isSuccessed {
                 ZKProgressHUD.showMessage("加载数据失败，请稍后再试")
-//                rootVC.window?.rootViewController = MainVC()
                 return
             }
             print(self.listViewModel.statusList)
@@ -66,17 +64,13 @@ extension HomeTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let vm = listViewModel.statusList[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: vm.cellId, for: indexPath) as! StatusCell
-//        let cell = tableView.dequeueReusableCell(withIdentifier: StatusCellRetweetedId, for: indexPath) as! StatusRetweetedCell
         cell.viewModel = vm
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let vm = listViewModel.statusList[indexPath.row]
-        let cell = StatusCell.init(style: .default, reuseIdentifier: vm.cellId)
-//        let cell = StatusRetweetedCell.init(style: .default, reuseIdentifier: StatusCellRetweetedId)
-        cell.viewModel = vm
-        return cell.rowHeights
+        return vm.rowHeight
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

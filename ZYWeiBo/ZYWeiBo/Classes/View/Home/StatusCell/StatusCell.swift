@@ -12,34 +12,17 @@ class StatusCell: UITableViewCell {
     private lazy var topView: StatusCellTopView = StatusCellTopView()
     lazy var contentLabel: UILabel = UILabel.init(title: "微博正文", fontSize: 15, color: UIColor.darkGray, screenInset: StatusCellMargin)
     lazy var bottomView: StatusCellBottomView = StatusCellBottomView()
-    
     lazy var pictureView: StatusPictureView = StatusPictureView()
-    
-
 
     
     var viewModel: StatusViewModel?{
         didSet{
             topView.viewModel = viewModel
             contentLabel.text = viewModel?.status.text
-            pictureView.snp.updateConstraints { make in
-                make.height.equalTo(Int(arc4random())%4 * 90)
-            }
             pictureView.viewModel = viewModel
-            pictureView.snp.updateConstraints { make in
-                make.height.equalTo(pictureView.bounds.height)
-                make.width.equalTo(pictureView.bounds.width)
-            }
         }
     }
-    
-    lazy var rowHeights:CGFloat = {
-//        print("计算缓存行高\(self.status.text)")
-        let cell = StatusCell.init(style: .default, reuseIdentifier: viewModel?.cellId)
-        return cell.rowHeight(vm: self.viewModel!)
-    }()
-    
-    
+
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -50,20 +33,7 @@ class StatusCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-    
-    
     
     func rowHeight(vm:StatusViewModel) -> CGFloat {
         viewModel = vm
@@ -93,12 +63,7 @@ extension StatusCell {
             make.left.equalTo(contentView.snp.left).offset(StatusCellMargin)
         }
         
-        pictureView.snp.makeConstraints { make in
-            make.top.equalTo(contentLabel.snp.bottom).offset(StatusCellMargin)
-            make.left.equalTo(contentLabel.snp.left)
-            make.width.equalTo(300)
-            make.height.equalTo(90)
-        }
+
         
         bottomView.snp.makeConstraints { make in
             make.top.equalTo(pictureView.snp.bottom).offset(StatusCellMargin)
