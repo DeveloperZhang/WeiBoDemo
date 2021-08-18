@@ -199,14 +199,22 @@ extension ZYNetworkToos {
         return NSURL(string: urlString)!
     }
     
-    func loadStatus(successed: @escaping ZYResponseSuccess, error: @escaping ZYResponseFail) {
+    func loadStatus(since_id since_id:Int, max_id:Int, successed: @escaping ZYResponseSuccess, error: @escaping ZYResponseFail) {
+        
+        var params = [String: AnyObject]()
+        if since_id > 0 {
+            params["since_id"] = since_id as AnyObject
+        }else if max_id > 0 {
+            params["max_id"] = max_id - 1 as AnyObject
+        }
         guard  tokenDict["access_token"] != nil else {
             error(NSError.init(domain: "cn.vicent.error", code: -1001, userInfo: ["message":"token为空"]))
             return
         }
+        params["access_token"] = UserAccountViewModel.sharedUserAccount.account!.access_token! as AnyObject
 //        let urlString = "https://api.weibo.com/2/emotions.json"
-//        let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
-        let urlString = "https://api.weibo.com/2/statuses/user_timeline.json"
+        let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
+//        let urlString = "https://api.weibo.com/2/statuses/user_timeline.json"
         
 //        let urlString = "https://api.weibo.com/oauth2/get_token_info"
         

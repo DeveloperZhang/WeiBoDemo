@@ -54,7 +54,7 @@ class WelcomeViewController: UIViewController {
           * animations为动画的代码块
          */
         
-        UIView.animate(withDuration: 1.2, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 10, options: [],animations:{
+        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 10, options: [],animations:{
             self.view.layoutIfNeeded()
         }){ (_) in
             UIView.animate(withDuration: 0.8) {

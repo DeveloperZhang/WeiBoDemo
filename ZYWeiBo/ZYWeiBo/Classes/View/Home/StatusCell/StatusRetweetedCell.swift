@@ -21,7 +21,7 @@ class StatusRetweetedCell: StatusCell {
     override var viewModel: StatusViewModel?{
         didSet {
             let reteetedLabelString = viewModel?.retweetedText
-            print("reteetedLabelString is \(String(describing: reteetedLabelString))")
+//            print("reteetedLabelString is \(String(describing: reteetedLabelString))")
             reteetedLabel.text = reteetedLabelString ?? ""
             pictureView.snp.updateConstraints { make in
                 let offset = viewModel?.thumbnailUrls?.count == 0 ? 0: StatusCellMargin

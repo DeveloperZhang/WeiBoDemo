@@ -168,9 +168,9 @@
             filePath = "ZYWeiBo/Classes/Tools/ZYNetworkTools.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "loadStatus(successed:error:)"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "loadStatus(since_id:max_id:successed:error:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

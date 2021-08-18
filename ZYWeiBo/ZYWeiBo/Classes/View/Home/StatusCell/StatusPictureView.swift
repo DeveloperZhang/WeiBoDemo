@@ -53,7 +53,19 @@ extension StatusPictureView {
         if count == 0 {
             return CGSize.zero
         }else if count == 1{
-            let size = CGSize(width: 150, height: 120)
+            var size = CGSize(width: 150, height: 120)
+            let url = viewModel?.thumbnailUrls![0]
+            SDWebImageManager.shared.loadImage(with: url as URL?, options:[.retryFailed,.refreshCached], progress: nil) { image, _, error, _, _, _ in
+                if let img = image{
+                    size = img.size
+                    size.width = size.width < 40 ? 40 : size.width
+                    if size.width > 300 {
+                        let w:CGFloat = 300
+                        let h = size.height * w / size.width
+                        size = CGSize.init(width: w, height: h)
+                    }
+                }
+            }
             layout.itemSize = size
             return size
         }else if count == 4 {
@@ -77,5 +89,4 @@ extension StatusPictureView: UICollectionViewDataSource {
         cell.imageURL = viewModel!.thumbnailUrls![indexPath.row]
         return cell
     }
-
 }

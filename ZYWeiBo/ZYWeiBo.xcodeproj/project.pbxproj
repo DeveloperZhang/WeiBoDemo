@@ -103,6 +103,8 @@
 		4453350826AB9C42002F813F /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453350726AB9C41002F813F /* UserAccount.swift */; };
 		4463B79C26B8C5F200BB96E2 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4463B79B26B8C5F200BB96E2 /* Status.swift */; };
 		4463B79E26B8D28200BB96E2 /* StatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4463B79D26B8D28200BB96E2 /* StatusListViewModel.swift */; };
+		44694E7926CB3B9F00CD272F /* WBRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44694E7826CB3B9F00CD272F /* WBRefreshControl.swift */; };
+		44694E7B26CB422600CD272F /* WBRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44694E7A26CB422600CD272F /* WBRefreshView.xib */; };
 		4484E4FE26A8EEBB007BFBE1 /* ZYOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4484E4FD26A8EEBB007BFBE1 /* ZYOAuthViewController.swift */; };
 		4484E50026A8F19A007BFBE1 /* ZYConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4484E4FF26A8F19A007BFBE1 /* ZYConst.swift */; };
 		449EC1B126BCB8DC00B7E9F9 /* StatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449EC1B026BCB8DC00B7E9F9 /* StatusPictureView.swift */; };
@@ -375,6 +377,8 @@
 		4453350726AB9C41002F813F /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		4463B79B26B8C5F200BB96E2 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		4463B79D26B8D28200BB96E2 /* StatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewModel.swift; sourceTree = "<group>"; };
+		44694E7826CB3B9F00CD272F /* WBRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBRefreshControl.swift; sourceTree = "<group>"; };
+		44694E7A26CB422600CD272F /* WBRefreshView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBRefreshView.xib; sourceTree = "<group>"; };
 		4484E4FD26A8EEBB007BFBE1 /* ZYOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZYOAuthViewController.swift; sourceTree = "<group>"; };
 		4484E4FF26A8F19A007BFBE1 /* ZYConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZYConst.swift; sourceTree = "<group>"; };
 		449EC1B026BCB8DC00B7E9F9 /* StatusPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPictureView.swift; sourceTree = "<group>"; };
@@ -539,6 +543,7 @@
 		4431327E26A1250C00A3B028 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				44694E7726CB3B6800CD272F /* RefreshView */,
 				44A928E126BB64D9006A67F6 /* StatusCell */,
 				4431328526A1256300A3B028 /* HomeTableViewController.swift */,
 			);
@@ -829,6 +834,15 @@
 			path = Private;
 			sourceTree = "<group>";
 		};
+		44694E7726CB3B6800CD272F /* RefreshView */ = {
+			isa = PBXGroup;
+			children = (
+				44694E7826CB3B9F00CD272F /* WBRefreshControl.swift */,
+				44694E7A26CB422600CD272F /* WBRefreshView.xib */,
+			);
+			path = RefreshView;
+			sourceTree = "<group>";
+		};
 		4484E4F926A8EE87007BFBE1 /* OAuth */ = {
 			isa = PBXGroup;
 			children = (
@@ -1003,6 +1017,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4431325626A11C5D00A3B028 /* LaunchScreen.storyboard in Resources */,
+				44694E7B26CB422600CD272F /* WBRefreshView.xib in Resources */,
 				4431325326A11C5D00A3B028 /* Assets.xcassets in Resources */,
 				4431325126A11C5B00A3B028 /* Main.storyboard in Resources */,
 			);
@@ -1159,6 +1174,7 @@
 				4432124226A7A19500415033 /* SDAsyncBlockOperation.m in Sources */,
 				4463B79E26B8D28200BB96E2 /* StatusListViewModel.swift in Sources */,
 				4432123B26A7A19400415033 /* SDImageAssetManager.m in Sources */,
+				44694E7926CB3B9F00CD272F /* WBRefreshControl.swift in Sources */,
 				4432121026A7A19400415033 /* SDWebImageCacheSerializer.m in Sources */,
 				4432123326A7A19400415033 /* SDWebImageOptionsProcessor.m in Sources */,
 				4432122E26A7A19400415033 /* SDImageCacheDefine.m in Sources */,
